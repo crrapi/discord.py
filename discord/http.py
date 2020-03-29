@@ -104,7 +104,7 @@ class HTTPClient:
         self.proxy_auth = proxy_auth
         self.use_clock = not unsync_clock
 
-        user_agent = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) discord/0.0.263 Chrome/78.0.3904.130 Electron/7.1.11 Safari/537.36'
+        self.user_agent = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) discord/0.0.263 Chrome/78.0.3904.130 Electron/7.1.11 Safari/537.36'
         # self.user_agent = user_agent.format(__version__, sys.version_info, aiohttp.__version__)
 
     def recreate(self):
