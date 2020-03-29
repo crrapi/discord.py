@@ -289,10 +289,10 @@ class DiscordWebSocket(websockets.client.WebSocketClientProtocol):
             'd': {
                 'token': self.token,
                 'properties': {
-                    '$os': sys.platform,
-                    '$browser': 'discord.py',
-                    '$device': 'discord.py',
-                    '$referrer': '',
+                    '$os': 'Windows',
+                    '$browser': 'Discord Client',
+                    '$release_channel': 'canary',
+                    '$client_version': '0.0.263',
                     '$referring_domain': ''
                 },
                 'compress': True,
