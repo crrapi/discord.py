@@ -127,6 +127,7 @@ class Guild(Hashable):
         - ``PARTNERED``: Guild is a partnered server.
         - ``MORE_EMOJI``: Guild is allowed to have more than 50 custom emoji.
         - ``DISCOVERABLE``: Guild shows up in Server Discovery.
+        - ``FEATURABLE``: Guild is able to be featured in Server Discovery.
         - ``COMMERCE``: Guild can sell things using store channels.
         - ``PUBLIC``: Users can lurk in this guild via Server Discovery.
         - ``NEWS``: Guild can create news channels.
@@ -891,7 +892,7 @@ class Guild(Hashable):
         self._channels[channel.id] = channel
         return channel
 
-    async def create_category(self, name, *, overwrites=None, reason=None):
+    async def create_category(self, name, *, overwrites=None, reason=None, position=None):
         """|coro|
 
         Same as :meth:`create_text_channel` except makes a :class:`CategoryChannel` instead.
@@ -901,7 +902,7 @@ class Guild(Hashable):
             The ``category`` parameter is not supported in this function since categories
             cannot have categories.
         """
-        data = await self._create_channel(name, overwrites, ChannelType.category, reason=reason)
+        data = await self._create_channel(name, overwrites, ChannelType.category, reason=reason, position=position)
         channel = CategoryChannel(state=self._state, guild=self, data=data)
 
         # temporarily add to the cache

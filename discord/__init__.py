@@ -15,7 +15,7 @@ __title__ = 'discord'
 __author__ = 'Rapptz'
 __license__ = 'MIT'
 __copyright__ = 'Copyright 2015-2020 Rapptz'
-__version__ = '1.3.2'
+__version__ = '1.3.3'
 
 from collections import namedtuple
 import logging
@@ -46,6 +46,7 @@ from .reaction import Reaction
 from . import utils, opus, abc
 from .enums import *
 from .embeds import Embed
+from .mentions import AllowedMentions
 from .shard import AutoShardedClient
 from .player import *
 from .webhook import *
@@ -56,7 +57,7 @@ from .team import *
 
 VersionInfo = namedtuple('VersionInfo', 'major minor micro releaselevel serial')
 
-version_info = VersionInfo(major=1, minor=3, micro=2, releaselevel='final', serial=0)
+version_info = VersionInfo(major=1, minor=3, micro=3, releaselevel='final', serial=0)
 
 try:
     from logging import NullHandler

@@ -290,7 +290,7 @@ class AutoShardedClient(Client):
             except Exception:
                 pass
 
-        to_close = [asyncio.ensure_future(shard.ws.close(), loop=self.loop) for shard in self.shards.values()]
+        to_close = [asyncio.ensure_future(shard.ws.close(code=1000), loop=self.loop) for shard in self.shards.values()]
         if to_close:
             await asyncio.wait(to_close)
 
@@ -348,10 +348,11 @@ class AutoShardedClient(Client):
             await shard.ws.change_presence(activity=activity, status=status, afk=afk)
             guilds = [g for g in self._connection.guilds if g.shard_id == shard_id]
 
+        activities = () if activity is None else (activity,)
         for guild in guilds:
             me = guild.me
             if me is None:
                 continue
 
-            me.activities = (activity,)
+            me.activities = activities
             me.status = status_enum
